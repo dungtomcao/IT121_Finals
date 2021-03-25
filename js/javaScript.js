@@ -1,8 +1,18 @@
+$("a").mouseover(function(){
+   $(this).css("color", "white");
+   $(this).css("background-color", "#28a4a4");
+});
+
+$("a").mouseout(function(){
+   $(this).css("color", "#28a4a4");
+   $(this).css("background-color", "white");
+});
+
 $( "#accordion" ).accordion({
   active: 2
 });
 function checkForm() {
-  // TODO: Perform input validation 
+
   let form = document.getElementById("userRegistration");
   let divObj = document.getElementById("formErrors");
   divObj.innerHTML = "";
@@ -44,11 +54,30 @@ function checkForm() {
   else {
      divObj.style.display = none;
   }
-}
+};
 
-document.getElementById("submit").addEventListener("click", function(event) {
+let submit = document.getElementById("submit");
+if (submit) {
+submit.addEventListener("click", function(event) {
   checkForm();
 
-  // Prevent default form action. DO NOT REMOVE THIS LINE
   event.preventDefault();
 });
+};
+
+let clicked = true;
+$("#change").click(function() {
+   if (clicked){
+      $(this).addClass("bla");
+      $("body").addClass("blaText");
+      $("h3").addClass("blaText");
+      clicked = false;
+   }
+   else {
+      $(this).removeClass("bla");
+      $("body").removeClass("blaText");
+      $("h3").removeClass("blaText");
+      clicked = true;
+   }
+});
+
